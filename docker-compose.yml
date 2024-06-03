@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+
+  db:
+    container_name: db
+    image: postgres:13
+    volumes:
+      - ./psql:/var/lib/postgresql/data
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=pcs
+
+  pcs:
+    container_name: pcs
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: on-failure
+    depends_on:
+      - db
+    ports:
+      - 8081:8081

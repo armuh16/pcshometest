@@ -1,0 +1,12 @@
+env: development # | production
+postgres:
+  username: mac
+  password: yourpassword
+  sslMode: disable
+  host: localhost
+  port: 5432
+  dbName: pcs
+auth:
+  expireAccessToken: 3d
+  expireRefreshToken: 6d
+  secret: secret
