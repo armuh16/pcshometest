@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "d9fbf3d6-1b56-4042-8735-ba55ed09b635",
+		"name": "Pcs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17728921"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login Seller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Username\":\"seller@mail.com\",\n    \"Password\":\"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Buyer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Username\":\"seller@mail.com\",\n    \"Password\":\"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List Product Seller [NEED TOKEN SELLER]",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjEsInV1aWQiOiI0ZDg3ZjNiYy1hODIxLTQ3MWEtYjFkMi1kOTFkMjBiYmNkOTUifSwiZXhwIjoxNzE3NjU4MDU3LCJpYXQiOjE3MTczOTg4NTd9.fT7E-K-3AS-rjsJ9vhIIKBPi3KYK8PqD57PPzias9fM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8081/v1/product",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product Seller [NEED TOKEN SELLER]",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjEsInV1aWQiOiI0ZDg3ZjNiYy1hODIxLTQ3MWEtYjFkMi1kOTFkMjBiYmNkOTUifSwiZXhwIjoxNzE3NjU4MDU3LCJpYXQiOjE3MTczOTg4NTd9.fT7E-K-3AS-rjsJ9vhIIKBPi3KYK8PqD57PPzias9fM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Name\":\"iPhone 15 Pro Max 128Gb\",\n    \"Description\":\"Smartphone\",\n    \"Price\":16000000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/v1/product",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Product Buyer [NEED TOKEN BUYER]",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjIsInV1aWQiOiJiNTcxZDYwNC1lYmJiLTQ2ZjMtYjJhYi1jZGI3MTYxZDkxMWEifSwiZXhwIjoxNzE3NjU4MjQyLCJpYXQiOjE3MTczOTkwNDJ9.K9DDU0R52P7NUrIH0JRhThWzRNlw_1sCwmitfI0DD5I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8081/v1/product/list?seller=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"product",
+								"list"
+							],
+							"query": [
+								{
+									"key": "seller",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Create Order Seller / Checkout [NEED TOKEN BUYER]",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjIsInV1aWQiOiJiNTcxZDYwNC1lYmJiLTQ2ZjMtYjJhYi1jZGI3MTYxZDkxMWEifSwiZXhwIjoxNzE3NjU4MjQyLCJpYXQiOjE3MTczOTkwNDJ9.K9DDU0R52P7NUrIH0JRhThWzRNlw_1sCwmitfI0DD5I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"SellerID\":1,\n    \"Items\":[1]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/v1/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Order Buyer & Seller / Cart [NEED TOKEN]",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjIsInV1aWQiOiJiNTcxZDYwNC1lYmJiLTQ2ZjMtYjJhYi1jZGI3MTYxZDkxMWEifSwiZXhwIjoxNzE3NjU4MjQyLCJpYXQiOjE3MTczOTkwNDJ9.K9DDU0R52P7NUrIH0JRhThWzRNlw_1sCwmitfI0DD5I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/v1/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Order Seller [NEED TOKEN SELLER]",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjIsInV1aWQiOiJiNTcxZDYwNC1lYmJiLTQ2ZjMtYjJhYi1jZGI3MTYxZDkxMWEifSwiZXhwIjoxNzE3NjU4MjQyLCJpYXQiOjE3MTczOTkwNDJ9.K9DDU0R52P7NUrIH0JRhThWzRNlw_1sCwmitfI0DD5I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"TransactionID\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/v1/transaction/accept",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"transaction",
+								"accept"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List History Buyer [NEED TOKEN BUYER]",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjIsInV1aWQiOiJiNTcxZDYwNC1lYmJiLTQ2ZjMtYjJhYi1jZGI3MTYxZDkxMWEifSwiZXhwIjoxNzE3NjU4MjQyLCJpYXQiOjE3MTczOTkwNDJ9.K9DDU0R52P7NUrIH0JRhThWzRNlw_1sCwmitfI0DD5I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/v1/transaction/history",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"transaction",
+								"history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

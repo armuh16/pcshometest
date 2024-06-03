@@ -12,7 +12,7 @@ Project ini menggunakan bahasa program golang & database postgres
 ## Docker
 
 1. Jalankan command `docker-compose up -d --build`
-2. Jalankan command `docker exec gokomodo go run main.go migration up`
+2. Jalankan command `docker exec pcs go run main.go migration up`
 3. Run command `sh bash.sh`
 3. Akses menggunakan port `8081`
 
