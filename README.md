@@ -8,6 +8,7 @@ Project ini menggunakan bahasa program golang & database postgres
 2. Setup konfigurasi database
 3. Jalankan migrasi database menggunakan command `go run main.go migration up`
 4. Jalankan service menggunakan command `go run main.go start`, akses menggunakan port `8081`
+5. Unit test menggunakan command `go test main_test.go -v`
 
 ## Docker
 
