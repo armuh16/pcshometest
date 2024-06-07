@@ -35,7 +35,7 @@ func (h *Handler) Route(m ...echo.MiddlewareFunc) {
 	transaction := h.EchoRoute.Group("/v1/transaction", m...)
 	transaction.GET("", h.FindAll, h.EchoRoute.Authentication)
 	transaction.POST("", h.CreateOrder, h.EchoRoute.Authentication)
-	transaction.POST("/accept", h.AcceptOrder, h.EchoRoute.Authentication)
+	transaction.POST("", h.AcceptOrder, h.EchoRoute.Authentication)
 	transaction.GET("/history", h.History, h.EchoRoute.Authentication)
 }
 

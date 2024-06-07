@@ -16,7 +16,7 @@ import (
 	"go.uber.org/fx"
 )
 
-type handler struct {
+type Handler struct {
 	fx.In
 	Logic     logic.IAuthLogic
 	EchoRoute *router.Router
@@ -24,18 +24,18 @@ type handler struct {
 	Db        *postgres.DB
 }
 
-func NewRoute(h handler, m ...echo.MiddlewareFunc) handler {
+func NewRoute(h Handler, m ...echo.MiddlewareFunc) Handler {
 	h.Route(m...)
 	return h
 }
 
-func (h *handler) Route(m ...echo.MiddlewareFunc) {
+func (h *Handler) Route(m ...echo.MiddlewareFunc) {
 	auth := h.EchoRoute.Group("/v1/auth", m...)
 	auth.POST("/login", h.Login)
 }
 
 // Login
-func (h *handler) Login(c echo.Context) error {
+func (h *Handler) Login(c echo.Context) error {
 	var reqData = new(dto.LoginRequest)
 
 	if err := c.Bind(reqData); err != nil {

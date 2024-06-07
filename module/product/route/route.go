@@ -18,7 +18,7 @@ import (
 	"go.uber.org/fx"
 )
 
-type handler struct {
+type Handler struct {
 	fx.In
 	Logic     logic.IProductLogic
 	EchoRoute *router.Router
@@ -26,12 +26,12 @@ type handler struct {
 	Db        *postgres.DB
 }
 
-func NewRoute(h handler, m ...echo.MiddlewareFunc) handler {
+func NewRoute(h Handler, m ...echo.MiddlewareFunc) Handler {
 	h.Route(m...)
 	return h
 }
 
-func (h *handler) Route(m ...echo.MiddlewareFunc) {
+func (h *Handler) Route(m ...echo.MiddlewareFunc) {
 	product := h.EchoRoute.Group("/v1/product", m...)
 	product.POST("", h.Create, h.EchoRoute.Authentication)
 	product.GET("", h.FindAll, h.EchoRoute.Authentication)
@@ -39,7 +39,7 @@ func (h *handler) Route(m ...echo.MiddlewareFunc) {
 }
 
 // FindAllForBuyer
-func (h *handler) FindAllForBuyer(c echo.Context) error {
+func (h *Handler) FindAllForBuyer(c echo.Context) error {
 	var reqData = new(dto.FindAllRequest)
 
 	_, ok := c.Request().Context().Value(jwt.InternalClaimData{}).(jwt.InternalClaimData)
@@ -74,7 +74,7 @@ func (h *handler) FindAllForBuyer(c echo.Context) error {
 }
 
 // FindAll
-func (h *handler) FindAll(c echo.Context) error {
+func (h *Handler) FindAll(c echo.Context) error {
 	var reqData = new(dto.FindAllRequest)
 
 	data, ok := c.Request().Context().Value(jwt.InternalClaimData{}).(jwt.InternalClaimData)
@@ -101,7 +101,7 @@ func (h *handler) FindAll(c echo.Context) error {
 }
 
 // Create
-func (h *handler) Create(c echo.Context) error {
+func (h *Handler) Create(c echo.Context) error {
 	var reqData = new(dto.CreateRequest)
 
 	data, ok := c.Request().Context().Value(jwt.InternalClaimData{}).(jwt.InternalClaimData)
